@@ -1,0 +1,27 @@
+<div id="content">
+  <h1>YYC Ruby May 2014 Lightning Talks</h1>
+
+  <%= content_tag :div, flash[:notice], :class => 'notice' if flash[:notice] %>
+  <%= content_tag :div, flash[:error],  :class => 'error'  if flash[:error] %>
+
+  <ol>
+    <% @signups.each do |signup| %>
+      <li>
+        <%= signup.name %> -
+        <i><%= signup.title %></i>
+      </li>
+    <% end %>
+
+    <li>
+      <%= form_for Signup.new do |f| %>
+        <%= f.label :name, 'Your Name' %>
+        <%= f.text_field :name %>
+
+        <%= f.label :title, 'Topic or Title' %>
+        <%= f.text_field :title %>
+
+        <button type="submit">Sign up!</button>
+      <% end %>
+    </li>
+  </ol>
+</div>
